@@ -1,42 +1,58 @@
 import React, { useState } from "react";
-import { Grid, Container, TextField } from "@material-ui/core";
+import styled from "styled-components";
+import { TextField } from "@material-ui/core";
 import "./index.css";
 import ButtonPdf from "./pages/MyDocument";
+
+const Container = styled.div`
+  width: 100%;
+  min-height: -webkit-fill-available;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Card = styled.div`
+  width: 490px;
+  height: 490px;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 10px 10px 41px -12px rgba(3,3,3,1);
+`;
 
 const App = () => {
   const [titulo, setTitulo] = useState("");
   const [parrafo, setParrafo] = useState("");
 
   return (
-    <Container maxWidth="sm">
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <h1>Generador de PDF</h1>
-        </Grid>
+    <Container>
+      <Card>
+        <h1>Generador de PDF</h1>
 
-        <Grid item xs={12}>
-          <TextField
-            id="titulo"
-            label="Titulo"
-            variant="outlined"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            id="parrafo"
-            label="Parrafo"
-            variant="outlined"
-            value={parrafo}
-            onChange={(e) => setParrafo(e.target.value)}
-          />
-        </Grid>
+        <TextField
+          id="titulo"
+          label="Título"
+          variant="outlined"
+          value={titulo}
+          onChange={(e) => setTitulo(e.target.value)}
+        />
 
-        <Grid item xs={12}>
-          <ButtonPdf titulo={titulo} parrafo={parrafo} />
-        </Grid>
-      </Grid>
+        <TextField
+          id="parrafo"
+          label="Párrafo"
+          variant="outlined"
+          value={parrafo}
+          onChange={(e) => setParrafo(e.target.value)}
+        />
+
+        <ButtonPdf titulo={titulo} parrafo={parrafo} />
+      </Card>
     </Container>
   );
 };

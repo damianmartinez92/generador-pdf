@@ -53,7 +53,7 @@ const ButtonPdf = (props) => (
       }}
     >
       {({ blob, url, loading, error }) =>
-        loading ? "Generando PDF..." : "Descargar"
+        loading ? "Cargando PDF..." : "Descargar"
       }
     </PDFDownloadLink>
   </Button>
